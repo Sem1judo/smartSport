@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Spring Boot User Authentication</title>
+
+    <meta charset="utf-8">
+    <title>Login</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+</head>
+
+<body class=" bg-warning">
+
+<div class="container w-25 my-3">
+    <div class=" card d-block border-0 ">
+        <form th:action="@{/sign-in}" method="post">
+            <div class="card-header bg-dark text-light">
+                <h2 class="text-uppercase font-weight-bold text-center">Login</h2>
+            </div>
+            <div th:if="${param.error}">
+                <div class="alert alert-danger">
+                    <span th:text="#{message.badCredentials}"></span>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="form-header mx-0">
+                </div>
+                <div class="form-group">
+                    <label for="username" th:text="#{user.email}">Email</label>
+                    <input type="text" class="form-control" id="username" name="username">
+                </div>
+                <div class="form-group">
+                    <label for="password" th:text="#{user.password}">Password</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                </div>
+            </div>
+            <div class="text-center form-group">Register
+                <h4 class="text-uppercase font-weight-bold text-center">
+                    <a th:href="@{/sign-up}" class="link-dark">Register now</a>
+                </h4>
+            </div>
+            <div class="card-footer text-center ">
+                <button type="submit"
+                        class="btn btn-dark btn-lg">Login
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="en">
+<head>
+    <title>Registration</title>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+
+</head>
+
+
+<body>
+<section class="h-100 bg-dark">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col">
+                <div class="card card-registration my-4">
+                    <div class="row g-0">
+                        <div class="col-xl-6 d-none d-xl-block">
+                            <img
+                                    src="https://mdbootstrap.com/img/Photos/new-templates/bootstrap-registration/img4.jpg"
+                                    alt="Sample photo"
+                                    class="img-fluid"
+                                    style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;"
+                            />
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="card-body p-md-5 text-black">
+                                <form th:action="@{/sign-up}" th:method="post" th:object="${user}">
+                                    <h3 class="mb-5 text-uppercase">Member registration form</h3>
+
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-outline">
+                                                <label class="form-label" for="firstName">First name</label>
+
+                                                <input type="text" class="form-control"
+                                                       id="firstName" th:field="*{firstName}"/>
+                                                <span th:if="${#fields.hasErrors('firstName')}"
+                                                      th:errors="*{firstName}">Name Error</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-outline">
+                                                <label class="form-label" for="lastName">Last name</label>
+                                                <input type="text" class="form-control"
+                                                       id="lastName" th:field="*{lastName}"/>
+                                                <span th:if="${#fields.hasErrors('lastName')}"
+                                                      th:errors="*{lastName}">Name Error</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-outline">
+                                                <label class="form-label" for="email">Email</label>
+
+                                                <input type="email" class="form-control"
+                                                       id="email" th:field="*{email}"/>
+                                                <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name Error</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-outline">
+                                                <label class="form-label" for="password">Password</label>
+                                                <input type="password" class="form-control"
+                                                       id="password" th:field="*{password}"/>
+                                                <span th:if="${#fields.hasErrors('password')}"
+                                                      th:errors="*{password}">Name Error</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="phone">Phone</label>
+                                        <input type="text" class="form-control"
+                                               id="phone" th:field="*{phone}"/>
+                                        <span th:if="${#fields.hasErrors('phone')}"
+                                              th:errors="*{phone}">Name Error</span>
+                                    </div>
+
+                                    <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+
+                                        <h6 class="mb-0 me-4">Gender: </h6>
+                                        <div class="col-md-4">
+
+                                            <label>
+                                                <select name="gender">
+                                                    <option th:each="gender : ${T(com.ua.semkov.smartsport.entity.Gender).values()}"
+                                                            th:value="${gender}" th:text="${gender}"></option>
+                                                </select>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <label for="birthDate">Birthday
+                                        </label>
+                                        <input type="date" class="form-control"
+                                               id="birthDate" th:field="*{birthDate}"/>
+                                        <span th:if="${#fields.hasErrors('birthDate')}"
+                                              th:errors="*{birthDate}">Name Error</span>
+                                    </div>
+                                    <div class="d-flex justify-content-end pt-3">
+                                        <button type="submit" class="btn btn-warning btn-lg ms-2">Submit form
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
+<!--                                        <div class="col-md-4" th:each="option : ${T(com.ua.semkov.sport_web.entity.Gender).values()}">-->
+<!--                                            <div class="checkbox checkbox-custom checkbox-circle">-->
+<!--                                                <input name="gender" type="checkbox" th:id="${option}" th:value="${option}" />-->
+<!--                                                <label th:for="${option}" th:text="${option}"></label>-->
+<!--                                            </div>-->
